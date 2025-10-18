@@ -1,0 +1,8 @@
+`timescale 1ns/1ps
+module and_4_tb 
+
+
+//DUT instantiation
+and_4 and_4_tb (a.(a_tb), b.(b_tb), .y(y_tb));
+
+endmodule
