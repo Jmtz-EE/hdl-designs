@@ -1,8 +1,37 @@
-`timescale 1ns/1ps
+`timescale 1ns/1ps.
+`default_netype none // prevents typos from defualting to wires
 module and_4_tb 
 
+    //Declare registers for testbench inputs
+    reg [3:0] a_tb;
+    reg [3:0] b_tb;
 
-//DUT instantiation
-and_4 and_4_tb (a.(a_tb), b.(b_tb), .y(y_tb));
+    wire [3:0] y_tb;
 
-endmodule
+    //DUT instantiation
+    and_4 and_4_tb (
+    .a(a_tb), .b(b_tb), .y(y_tb)
+    );
+
+    //Initial block to provide stimulus
+    inital begin
+        /*initialize inputs 
+        wire types will default to high z and reg default to x unknown value.*/ 
+        a_tb = 4'b0000;
+        b_tb = 4'b0000;
+
+        //monitor to print values when signals change
+        $monitor();
+
+        //Apply test vectors 
+        #10 a_tb = 4'b111; b_tb = 4'b1111;
+        #10 a_tb = 4'b1010; b_tb = 4'b1100;
+        #10 a_tb = 4'b0110; b_tb = 4'b1001;
+        #10 a_tb = 4'b1111; b_tb = 4'0000;
+
+        #10
+
+    end 
+    
+
+endmodule  
