@@ -1,4 +1,4 @@
-module not_4 (
+module NOT4 (
     input[3:0] a,b,
     output[3:0] x,y
 );
