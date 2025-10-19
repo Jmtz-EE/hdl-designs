@@ -1,2 +1,3 @@
-./four_input_and.v
-./four_input_and_tb.v
++incdir+logic/and
+logic/and/four_input_and.v
+logic/and/four_input_and_tb.v
