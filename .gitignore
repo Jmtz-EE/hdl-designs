@@ -19,3 +19,7 @@ sim/**
 # OS/editor junk
 .DS_Store
 .vscode/
+
+# Simvision GUI state
+.simvision/
+.simvisionrc
