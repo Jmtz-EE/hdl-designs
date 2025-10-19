@@ -19,7 +19,7 @@ module AND4_tb;
      //xcellium wave dump 
         initial begin
         $shm_open("waves.shm");       // open SHM database
-        $shm_probe("AND4_tb", "AS");   // A=all nets/regs, S=structure
+        $shm_probe(AND4_tb, "AS");   // A=all nets/regs, S=structure
         end
 
         task check;
@@ -29,11 +29,11 @@ module AND4_tb;
                     if(y_tb !== exp) 
                     begin
                         errors = errors +1;
-                        $error("Mismatch @ t=%0t: a=%b b=%b y=%b expected=%b",
+                        $display("ERROR @ t=%0t: a=%b b=%b y=%b expected=%b",
                         $time, a_tb, b_tb, y_tb, (a_tb & b_tb));
                     end
                 end
-            endtask;
+            endtask
 
 
     //Initial block to provide stimulus
@@ -46,12 +46,12 @@ module AND4_tb;
         //Monitor
         $monitor("t=%0t ns | a=%b b=%b -> y=%b", $time, a_tb, b_tb, y_tb);
         
-        #10 a_tb = 4'b1111; b_tb = 4'b1111; check();
-        #10 a_tb = 4'b1010; b_tb = 4'b1100; check();
-        #10 a_tb = 4'b0110; b_tb = 4'b1001; check();
-        #10 a_tb = 4'b1111; b_tb = 4'b0000; check();
-        #10 a_tb = 4'b0000; b_tb = 4'b1111; check();
-        #10 a_tb = 4'b0101; b_tb = 4'b0011; check();
+        #10 a_tb = 4'b1111; b_tb = 4'b1111; #1 check;
+        #10 a_tb = 4'b1010; b_tb = 4'b1100; #1 check;
+        #10 a_tb = 4'b0110; b_tb = 4'b1001; #1 check;
+        #10 a_tb = 4'b1111; b_tb = 4'b0000; #1 check;
+        #10 a_tb = 4'b0000; b_tb = 4'b1111; #1 check;
+        #10 a_tb = 4'b0101; b_tb = 4'b0011; #1 check;
 
         #1;
         if (errors == 0) $display("PASS: all vectors matched.");

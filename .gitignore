@@ -1,0 +1,21 @@
+# Cadence/Xcelium artifacts
+xcelium.d/
+INCA_libs/
+waves.shm/
+*.shm
+*.trn
+*.dsn
+*.pak
+*.log
+xrun.log
+xrun.history
+*.history
+*.key
+
+# Local sim run dirs (keep structure, not contents)
+sim/**
+!sim/.gitkeep
+
+# OS/editor junk
+.DS_Store
+.vscode/
