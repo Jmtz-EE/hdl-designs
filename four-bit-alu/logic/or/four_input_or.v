@@ -1,8 +1,8 @@
 `timescale 1ns/1ps
 `default_nettype none
 module or_4(
-    input [3:0] a,b,
-    output [3:0]  y
+    input  wire [3:0] a,b,
+    output wire [3:0]  y
 );
     assign y =  a | b;
 endmodule
